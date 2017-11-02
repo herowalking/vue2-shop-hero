@@ -82,10 +82,16 @@
     import NavHeader from './../components/NavHeader.vue'
 
     export default {
-      name: 'GoodsList',
-      data: {
-
+//      name: 'GoodsList',
+      data() {
+          return {
+            msg: "welcome to Vue2-shop"
+          }
       },
+      components: {
+        NavHeader,
+        NavFooter
+      }
 
     }
 </script>
