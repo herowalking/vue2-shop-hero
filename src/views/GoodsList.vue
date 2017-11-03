@@ -1,13 +1,7 @@
 <template>
     <div class="goods-list">
-      <div class="nav-breadcrumb-wrap">
-        <div class="container">
-          <nav class="nav-breadcrumb">
-            <a href="/">主页</a>
-            <span>商品列表</span>
-          </nav>
-        </div>
-      </div>
+      <nav-header></nav-header>
+      <nav-bread></nav-bread>
       <div class="accessory-result-page">
         <div class="container">
           <div class="filter-nav">
@@ -50,36 +44,16 @@
           </div>
         </div>
       </div>
-      <footer class="footer">
-        <div class="footer__wrap">
-          <div class="footer__secondary">
-            <div class="footer__inner">
-              <div class="footer__secondary__nav">
-                <span>Copyright©2013-2017 dongnaoedu.com All Rights Reserved.</span>
-                <a href="https://dongnaoedu.com/">
-                  关于我们
-                </a>
-                <a href="http://dongnao.ke.qq.com/#tab=1&category=-1">
-                  腾讯课堂&&动脑学院
-                </a>
-                <a href="https://dongnaoedu.com/index.html">
-                  版权所有 2008-2017 湘ICP备16006411号-1
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </footer>
+      <nav-footer></nav-footer>
     </div>
 </template>
 
 <script>
     import './../assets/css/base.css'
-    import './../assets/css/nav-header.css'
-    import './../assets/css/nav-bread.css'
-    import './../assets/css/nav-footer.css'
     import './../assets/css/goods-list.css'
     import NavHeader from './../components/NavHeader.vue'
+    import NavBread from './../components/NavBread.vue'
+    import NavFooter from './../components/NavFooter.vue'
 
     export default {
 //      name: 'GoodsList',
@@ -90,14 +64,9 @@
       },
       components: {
         NavHeader,
+        NavBread,
         NavFooter
       }
 
     }
 </script>
-
-<style>
-    .goods-list {
-
-    }
-</style>
