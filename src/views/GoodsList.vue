@@ -48,6 +48,7 @@
         </div>
       </div>
     </div>
+    <div class="md-overlay" v-show="overLayFlag" @click.stop="closePop"></div>
     <nav-footer></nav-footer>
   </div>
 </template>
@@ -92,7 +93,8 @@
           }
         ],
         priceChecked:'all',
-        filterBy: false
+        filterBy: false,
+        overLayFlag: false
 
       }
     },
@@ -116,6 +118,11 @@
       },
       showFilterPop() {
         this.filterBy = true;
+        this.overLayFlag = true;
+      },
+      closePop() {
+        this.filterBy = false;
+        this.overLayFlag = false;
       }
     }
 
