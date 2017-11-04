@@ -19,9 +19,9 @@
           <div class="filter" id="filter">
             <dl class="filter-price">
               <dt>价格区间:</dt>
-              <dd><a href="javascript:void(0)">选择价格</a></dd>
-              <dd>
-                <a href="javascript:void(0)">￥ 0 - 100 元</a>
+              <dd><a href="javascript:void(0)" @click="setPriceFilter('all')" v-bind:class="{'cur': priceChecked=='all'}">选择价格</a></dd>
+              <dd v-for="(item, index) in priceFilter">
+                <a href="javascript:void(0)" @click="setPriceFilter(index)" v-bind:class="{'cur': priceChecked==index}">￥ {{item.startPrice}} - {{item.endPrice}} 元</a>
               </dd>
             </dl>
           </div>
@@ -64,7 +64,34 @@
 //      name: 'GoodsList',
     data() {
       return {
-        goodsList: []
+        goodsList: [],
+        priceFilter:[
+          {
+            startPrice:'0.00',
+            endPrice:'1000.00'
+          },
+          {
+            startPrice:'1000.00',
+            endPrice:'2000.00'
+          },
+          {
+            startPrice:'2000.00',
+            endPrice:'3000.00'
+          },
+          {
+            startPrice:'3000.00',
+            endPrice:'4000.00'
+          },
+          {
+            startPrice:'4000.00',
+            endPrice:'5000.00'
+          },
+          {
+            startPrice:'5000.00',
+            endPrice:'6000.00'
+          }
+        ],
+        priceChecked:'all'
 
       }
     },
@@ -79,9 +106,12 @@
     methods: {
       getGoodsList() {
         axios.get("/goods").then((result) => {
-          console.log(result);
           this.goodsList = result.data;
         })
+      },
+      setPriceFilter(index) {
+        console.log(index);
+        this.priceChecked = index;
       }
     }
 
