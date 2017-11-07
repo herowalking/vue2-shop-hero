@@ -7,7 +7,8 @@ import VueLazyLoad from 'vue-lazyload'
 
 Vue.use(VueLazyLoad, {
   loading: 'static/loading-svg/loading-bars.svg',
-  try: 3
+  // try: 3
+  attempt: 3
 });
 
 Vue.config.productionTip = false
