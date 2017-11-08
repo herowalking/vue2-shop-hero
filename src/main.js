@@ -4,12 +4,15 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import VueLazyLoad from 'vue-lazyload'
+import VueInfiniteScroll from 'vue-infinite-scroll'
 
 Vue.use(VueLazyLoad, {
   loading: 'static/loading-svg/loading-bars.svg',
   // try: 3  //default 1
   attempt: 3  //default 1
 });
+
+Vue.use(VueInfiniteScroll);
 
 Vue.config.productionTip = false
 
