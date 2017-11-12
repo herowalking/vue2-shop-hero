@@ -124,7 +124,8 @@
         }
         this.loading = true;
 //        axios.get("/goods").then((result) => {
-        axios.get("http://127.0.0.1:3000/goods", {
+//        axios.get("http://127.0.0.1:3000/goods", {
+        axios.get("/goods", {
           params: param
         }).then((result) => {
 //          console.log(result);
