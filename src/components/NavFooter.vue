@@ -8,15 +8,15 @@
           <div class="footer__secondary">
             <div class="footer__inner">
               <div class="footer__secondary__nav">
-                <span>Copyright©2013-2017 dongnaoedu.com All Rights Reserved.</span>
+                <span>Copyright©2013-2017 herowalking.com All Rights Reserved.</span>
                 <a href="https://dongnaoedu.com/">
                   关于我们
                 </a>
-                <a href="http://dongnao.ke.qq.com/#tab=1&category=-1">
-                  腾讯课堂&&动脑学院
+                <a href="http://www.herowalking.com">
+                  希尔沃金
                 </a>
                 <a href="https://dongnaoedu.com/index.html">
-                  版权所有 2008-2017 湘ICP备16006411号-1
+                  版权所有 2008-2017 粤ICP备16006411号-1
                 </a>
               </div>
             </div>
