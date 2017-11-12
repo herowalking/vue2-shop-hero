@@ -37,7 +37,7 @@ router.post('/login', function (req, res, next) {
 });
 
 //登出接口
-router.post('/logOut', function (req, res, next) {
+router.post('/logout', function (req, res, next) {
   res.cookie('userId', '', {
     path: '/',
     maxAge: -1
