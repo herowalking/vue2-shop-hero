@@ -95,7 +95,7 @@
                   </div>
                   <div class="cart-tab-5">
                     <div class="cart-item-opration">
-                      <a href="javascript:;" class="item-edit-btn">
+                      <a href="javascript:;" class="item-edit-btn" @click="delCartConfim(item)">
                         <svg class="icon icon-del">
                           <use xlink:href="#icon-del" />
                         </svg>
@@ -132,6 +132,13 @@
           </div>
         </div>
       </div>
+      <Modal :mdShow="modalConfirm" @close="closeModal">
+        <p slot="message">你确定要删除这个商品吗？</p>
+        <div slot="btnGroup">
+          <a href="javascript:;" class="btn btn--m" @click="delCart">确定</a>
+          <a href="javascript:;" class="btn btn--m btn--red" @click="modalConfirm = false">关闭</a>
+        </div>
+      </Modal>
       <nav-footer></nav-footer>
     </div>
 </template>
@@ -149,7 +156,9 @@
   export default {
     data() {
       return {
-          cartList: []
+        cartList: [],
+        delItem: {},
+        modalConfirm: false
       }
     },
     mounted() {
@@ -180,6 +189,25 @@
             this.cartList = res.result;
           });
       },
+      closeModal() {
+        this.modalConfirm = false;
+      },
+      delCartConfim(item) {
+        this.delItem = item;
+        this.modalConfirm = true;
+      },
+      delCart() {
+        axios.post('/users/cartDel', {
+          productId: this.delItem.productId
+        }).then((response) => {
+          let res = response.data;
+          if(res.status === '0') {
+            this.modalConfirm = false;
+            var delCount = this.delItem.productNum;
+            this.init();
+          }
+        });
+      }
     }
   }
 </script>
