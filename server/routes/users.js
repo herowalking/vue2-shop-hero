@@ -189,4 +189,42 @@ router.post('/editCheckAll', function (req, res, next) {
   });
 });
 
+//查询用户地址接口
+router.get('/addressList', function (req, res, next) {
+  var userId = req.cookies.userId;
+  User.findOne({userId:userId}, function (err, doc) {
+    if(err) {
+      res.json({
+        status: '1',
+        msg: err.message,
+        result: ''
+      });
+    } else {
+      res.json({
+        status: '0',
+        msg: '',
+        result: doc.addressList
+      });
+    }
+  });
+});
+
+//设置默认地址接口
+router.post('/setDefault', function (req, res, next) {
+  var userId = req.cookies.userId,
+    addressId = req.body.addressId;
+  if(!addressId) {
+    res.json({
+      status: '1003',
+      msg: 'addressId is null',
+      result: ''
+    });
+  } else {
+    User.findOne({userId: userId}, function (err, doc) {
+      
+    })
+  }
+
+})
+
 module.exports = router;
