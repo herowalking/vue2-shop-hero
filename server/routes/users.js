@@ -257,5 +257,49 @@ router.post('/setDefault', function (req, res, next) {
   }
 });
 
+//删除地址接口
+router.post('/users/delAddress', function (req, res, next) {
+  var userId = req.cookies.userId,
+    addressId = req.body.addressId;
+  User.findOne({userId: userId}, function (err, doc) {
+    if(err) {
+      res.json({
+        status: "1",
+        msg: err.message,
+        result: ''
+      });
+    } else {
+      if(doc.addressList.length > 1) {
+        User.update({userId, userId}, {
+          $pull:{
+            'addressList':{
+              'addressId': addressId
+            }
+          }
+        }, function(err, doc){
+          if(err) {
+            res.json({
+              status: '1',
+              msg: err.message,
+              result: ''
+            });
+          } else {
+            res.json({
+              status: '0',
+              msg: '',
+              result: ''
+            });
+          }
+        });
+      } else {
+        res.json({
+          status: '1',
+          msg: '至少保留一条收货地址！',
+          result: ''
+        });
+      }
+    }
+  });
+});
 
 module.exports = router;
