@@ -258,7 +258,7 @@ router.post('/setDefault', function (req, res, next) {
 });
 
 //删除地址接口
-router.post('/users/delAddress', function (req, res, next) {
+router.post('/delAddress', function (req, res, next) {
   var userId = req.cookies.userId,
     addressId = req.body.addressId;
   User.findOne({userId: userId}, function (err, doc) {
