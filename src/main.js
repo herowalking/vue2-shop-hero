@@ -5,6 +5,8 @@ import App from './App'
 import router from './router'
 import VueLazyLoad from 'vue-lazyload'
 import VueInfiniteScroll from 'vue-infinite-scroll'
+import axios from 'axios'
+import Vuex from 'vuex'
 
 Vue.use(VueLazyLoad, {
   loading: 'static/loading-svg/loading-bars.svg',
@@ -13,6 +15,7 @@ Vue.use(VueLazyLoad, {
 });
 
 Vue.use(VueInfiniteScroll);
+Vue.use(vuex);
 
 Vue.config.productionTip = false
 
