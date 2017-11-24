@@ -15,7 +15,7 @@ Vue.use(VueLazyLoad, {
 });
 
 Vue.use(VueInfiniteScroll);
-Vue.use(vuex);
+Vue.use(Vuex);
 
 Vue.config.productionTip = false
 const store = new Vuex.Store({
@@ -29,7 +29,7 @@ const store = new Vuex.Store({
       state.nickName = nickName;
     },
     //更新购物车信息
-    updateCartCont(state, cartCount) {
+    updateCartCount(state, cartCount) {
       state.cartCount = cartCount;
     }
   }
@@ -38,7 +38,34 @@ const store = new Vuex.Store({
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
+  store,
   router,
+  mounted() {
+    this.checkLogin(),
+    this.getCartCount()
+  },
+  methods: {
+    checkLogin() {
+      axios.get('/users/checkLogin').then(res => {
+        var res = res.data;
+        if(res.status == '0') {
+          this.$store.commit("updateUserInfo", res.result);
+        } else {
+          if(this.$route.path != '/goods') {
+            this.$route.push('/goods');
+          }
+        }
+      });
+    },
+    getCartCount() {
+      axios.get('/users/getCartCount').then(res => {
+        var res = res.data;
+        if(res.status == '0') {
+          this.$store.commit("updateCartCount", res.result);
+        }
+      })
+    }
+  },
   template: '<App/>',
   components: { App }
 })
