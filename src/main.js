@@ -18,6 +18,22 @@ Vue.use(VueInfiniteScroll);
 Vue.use(vuex);
 
 Vue.config.productionTip = false
+const store = new Vuex.Store({
+  state: {
+    nickName: '',
+    cartCount: 0
+  },
+  mutations: {
+    //更新用户信息
+    updateUserInfo(state, nickName) {
+      state.nickName = nickName;
+    },
+    //更新购物车信息
+    updateCartCont(state, cartCount) {
+      state.cartCount = cartCount;
+    }
+  }
+});
 
 /* eslint-disable no-new */
 new Vue({
