@@ -208,7 +208,7 @@
       closeModal() {
         this.modalConfirm = false;
       },
-      delCartConfim(item) {
+      delCartConfirm(item) {
         this.delItem = item;
         this.modalConfirm = true;
       },
@@ -220,6 +220,7 @@
           if(res.status === '0') {
             this.modalConfirm = false;
             var delCount = this.delItem.productNum;
+            this.$store.commit('updateCartCount', -delCount);
             this.init();
           }
         });
@@ -243,7 +244,8 @@
         }).then((response) => {
           let res = response.data;
           if(res.status === '0') {
-            console.log('update success');
+//            console.log('update success');
+            this.$store.commit('updateCartCount', flag=='add'?1:-1);
           }
         });
       },

@@ -30,7 +30,7 @@ const store = new Vuex.Store({
     },
     //更新购物车信息
     updateCartCount(state, cartCount) {
-      state.cartCount = cartCount;
+      state.cartCount += cartCount;
     }
   }
 });
@@ -52,7 +52,7 @@ new Vue({
           this.$store.commit("updateUserInfo", res.result);
         } else {
           if(this.$route.path != '/goods') {
-            this.$route.push('/goods');
+            this.$router.push('/goods');
           }
         }
       });
