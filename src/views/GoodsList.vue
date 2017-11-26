@@ -156,6 +156,7 @@
         this.loading = true;
 //        axios.get("/goods").then((result) => {
 //        axios.get("http://127.0.0.1:3000/goods", {
+//        axios.get("http://localhost:3000/goods/list", {
         axios.get("/goods/list", {
           params: param
         }).then((result) => {
@@ -203,6 +204,7 @@
         }, 500)
       },
       addCart(productId) {
+//        axios.post("http://localhost:8090/goods/addCart", {
         axios.post('/goods/addCart', {
           productId: productId
         }).then((res)=>{
