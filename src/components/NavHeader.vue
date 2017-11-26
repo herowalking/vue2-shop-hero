@@ -86,8 +86,8 @@
   import axios from 'axios';
   axios.defaults.withCredentials = true;
   import {mapState} from 'vuex'
-//  var backend = '';
-  var backend = 'http://localhost:3000';
+  var backend = '';
+//  var backend = 'http://localhost:3000';
 
   export default {
     data() {

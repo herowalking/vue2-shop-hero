@@ -143,8 +143,8 @@
   import {currency} from './../util/currency'
   import axios from 'axios';
   axios.defaults.withCredentials = true;
-  //  var backend = '';
-  var backend = 'http://localhost:3000';
+    var backend = '';
+//  var backend = 'http://localhost:3000';
 
     export default {
       data() {

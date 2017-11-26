@@ -7,8 +7,8 @@ import VueLazyLoad from 'vue-lazyload'
 import VueInfiniteScroll from 'vue-infinite-scroll'
 import axios from 'axios';
 axios.defaults.withCredentials = true;
-//  var backend = '';
-var backend = 'http://localhost:3000';
+ var backend = '';
+// var backend = 'http://localhost:3000';
 import Vuex from 'vuex'
 
 Vue.use(VueLazyLoad, {
