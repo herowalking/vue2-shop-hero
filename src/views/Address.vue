@@ -141,7 +141,10 @@
   import NavFooter from './../components/NavFooter.vue'
   import Modal from './../components/Modal.vue'
   import {currency} from './../util/currency'
-  import axios from 'axios'
+  import axios from 'axios';
+  axios.defaults.withCredentials = true;
+  //  var backend = '';
+  var backend = 'http://localhost:3000';
 
     export default {
       data() {
@@ -170,7 +173,8 @@
       },
       methods: {
         init() {
-          axios.get('/users/addressList').then((response) => {
+//          axios.get('/users/addressList').then((response) => {
+          axios.get(backend + '/users/addressList').then((response) => {
             let res = response.data;
             this.addressList = res.result;
             console.log(res.result);
@@ -185,7 +189,8 @@
           }
         },
         setDefault(addressId) {
-          axios.post('/users/setDefault', {
+//          axios.post('/users/setDefault', {
+          axios.post(backend + '/users/setDefault', {
             addressId: addressId
           }).then((response) => {
             let res = response.data;
@@ -203,7 +208,8 @@
           this.addressId = addressId;
         },
         delAddress() {
-          axios.post('/users/delAddress', {
+//          axios.post('/users/delAddress', {
+          axios.post(backend + '/users/delAddress', {
             addressId: this.addressId
           }).then((response) => {
             let res = response.data;

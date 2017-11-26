@@ -136,7 +136,10 @@
   import NavBread from './../components/NavBread.vue'
   import NavFooter from './../components/NavFooter.vue'
   import {currency} from './../util/currency'
-  import axios from 'axios'
+  import axios from 'axios';
+  axios.defaults.withCredentials = true;
+  //  var backend = '';
+  var backend = 'http://localhost:3000';
 
   export default {
     data() {
@@ -162,7 +165,8 @@
     },
     methods: {
       init() {
-        axios.get('/users/cartList').then((response) => {
+//        axios.get('/users/cartList').then((response) => {
+        axios.get(backend + '/users/cartList').then((response) => {
           let res = response.data;
           this.cartList = res.result;
 
@@ -177,7 +181,7 @@
       },
       payment() {
         var addressId = this.$route.query.addressId;
-        axios.post('/users/payment', {
+        axios.post(backend + '/users/payment', {
           addressId: addressId,
           orderTotal: this.orderTotal
         }).then((response) => {

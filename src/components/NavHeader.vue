@@ -83,8 +83,12 @@
 
 <script>
   import './../assets/css/login.css'
-  import axios from 'axios'
+  import axios from 'axios';
+  axios.defaults.withCredentials = true;
   import {mapState} from 'vuex'
+//  var backend = '';
+  var backend = 'http://localhost:3000';
+
   export default {
     data() {
       return {
@@ -103,7 +107,8 @@
     },
     methods: {
       checkLogin() {
-        axios.get('/users/checkLogin')
+//        axios.get('/users/checkLogin')
+        axios.get(backend + '/users/checkLogin')
           .then((response)=>{
             var res = response.data;
             var path = this.$route.pathname;
@@ -124,7 +129,8 @@
           this.errorTip = true;
           return;
         }
-        axios.post('/users/login', {
+//        axios.post('/users/login', {
+        axios.post(backend + '/users/login', {
           userName: this.userName,
           userPwd: this.userPwd
         }).then((response) => {
@@ -141,7 +147,8 @@
         });
       },
       logOut() {
-        axios.post('/users/logout').then((response) => {
+//        axios.post('/users/logout').then((response) => {
+        axios.post(backend + '/users/logout').then((response) => {
           let res = response.data;
           if(res.status == '0') {
 //            this.nickName = '';
@@ -152,7 +159,8 @@
         })
       },
       getCartCount() {
-        axios.get('/users/getCartCount').then(res => {
+//        axios.get('/users/getCartCount').then(res => {
+        axios.get(backend + '/users/getCartCount').then(res => {
           var res = res.data;
 //          alert(res.result);
           this.$store.commit('updateCartCount', res.result);

@@ -86,8 +86,10 @@
   import NavFooter from './../components/NavFooter.vue'
   import Modal from './../components/Modal.vue'
   import {currency} from './../util/currency'
-
-  import axios from 'axios'
+  import axios from 'axios';
+  axios.defaults.withCredentials = true;
+  //  var backend = '';
+  var backend = 'http://localhost:3000';
 
   export default {
 //      name: 'GoodsList',
@@ -157,7 +159,8 @@
 //        axios.get("/goods").then((result) => {
 //        axios.get("http://127.0.0.1:3000/goods", {
 //        axios.get("http://localhost:3000/goods/list", {
-        axios.get("/goods/list", {
+//        axios.get("/goods/list", {
+        axios.get(backend + "/goods/list", {
           params: param
         }).then((result) => {
 //          console.log(result);
@@ -205,7 +208,8 @@
       },
       addCart(productId) {
 //        axios.post("http://localhost:8090/goods/addCart", {
-        axios.post('/goods/addCart', {
+//        axios.post('/goods/addCart', {
+        axios.post(backend + '/goods/addCart', {
           productId: productId
         }).then((res)=>{
           var res = res.data;

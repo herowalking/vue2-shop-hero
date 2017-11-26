@@ -53,7 +53,11 @@
   import NavFooter from './../components/NavFooter'
   import NavBread from './../components/NavBread'
   import {currency} from './../util/currency'
-  import axios from 'axios'
+  import axios from 'axios';
+  axios.defaults.withCredentials = true;
+  //  var backend = '';
+  var backend = 'http://localhost:3000';
+
     export default {
         data() {
             return {
@@ -75,7 +79,8 @@
           if(!orderId) {
             return;
           }
-          axios.get('/users/orderDetail',{
+//          axios.get('/users/orderDetail',{
+          axios.get(backend + '/users/orderDetail',{
             params: {
               orderId: orderId
             }

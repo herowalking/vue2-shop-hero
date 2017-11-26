@@ -5,7 +5,10 @@ import App from './App'
 import router from './router'
 import VueLazyLoad from 'vue-lazyload'
 import VueInfiniteScroll from 'vue-infinite-scroll'
-import axios from 'axios'
+import axios from 'axios';
+axios.defaults.withCredentials = true;
+//  var backend = '';
+var backend = 'http://localhost:3000';
 import Vuex from 'vuex'
 
 Vue.use(VueLazyLoad, {
@@ -46,7 +49,8 @@ new Vue({
   },
   methods: {
     checkLogin() {
-      axios.get('/users/checkLogin').then(res => {
+      // axios.get('/users/checkLogin').then(res => {
+      axios.get(backend + '/users/checkLogin').then(res => {
         var res = res.data;
         if(res.status == '0') {
           this.$store.commit("updateUserInfo", res.result);
@@ -58,7 +62,7 @@ new Vue({
       });
     },
     getCartCount() {
-      axios.get('/users/getCartCount').then(res => {
+      axios.get(backend + '/users/getCartCount').then(res => {
         var res = res.data;
         if(res.status == '0') {
           this.$store.commit("updateCartCount", res.result);

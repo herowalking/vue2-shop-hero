@@ -151,8 +151,10 @@
   import NavFooter from './../components/NavFooter.vue'
   import Modal from './../components/Modal.vue'
   import {currency} from './../util/currency'
-
-  import axios from 'axios'
+  import axios from 'axios';
+  axios.defaults.withCredentials = true;
+  //  var backend = '';
+  var backend = 'http://localhost:3000';
 
   export default {
     data() {
@@ -199,7 +201,8 @@
     },
     methods: {
       init() {
-        axios.get('/users/cartList')
+//        axios.get('/users/cartList')
+        axios.get(backend + '/users/cartList')
           .then((response) => {
             let res = response.data;
             this.cartList = res.result;
@@ -213,7 +216,8 @@
         this.modalConfirm = true;
       },
       delCart() {
-        axios.post('/users/cartDel', {
+//        axios.post('/users/cartDel', {
+        axios.post(backend + '/users/cartDel', {
           productId: this.delItem.productId
         }).then((response) => {
           let res = response.data;
@@ -237,7 +241,8 @@
           item.checked = item.checked === '1'?'0':'1';
         }
 
-        axios.post('/users/cartEdit', {
+//        axios.post('/users/cartEdit', {
+        axios.post(backend + '/users/cartEdit', {
           productId: item.productId,
           productNum: item.productNum,
           checked: item.checked
@@ -255,7 +260,8 @@
         this.cartList.forEach((item) => {
           item.checked = flag ? '1' : '0';
         });
-        axios.post('/users/editCheckAll',{
+//        axios.post('/users/editCheckAll',{
+        axios.post(backend + '/users/editCheckAll',{
           checkAll: flag
         }).then((response) => {
           let res = response.data;
