@@ -181,6 +181,7 @@
       },
       payment() {
         var addressId = this.$route.query.addressId;
+//        axios.post('/users/payment', {
         axios.post(backend + '/users/payment', {
           addressId: addressId,
           orderTotal: this.orderTotal

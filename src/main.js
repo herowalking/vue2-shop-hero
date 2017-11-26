@@ -62,6 +62,7 @@ new Vue({
       });
     },
     getCartCount() {
+      // axios.get('/users/getCartCount').then(res => {
       axios.get(backend + '/users/getCartCount').then(res => {
         var res = res.data;
         if(res.status == '0') {
